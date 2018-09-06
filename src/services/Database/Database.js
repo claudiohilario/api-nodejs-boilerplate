@@ -1,11 +1,9 @@
-import { Pool } from 'pg';
-
+import * as databaseDriversList from './drivers';
+/**
+ * This function represents the interface of the Connecting in Specific Database.
+ */
 export default class Database {
-  constructor(config) {
-    this.pool = new Pool(config);
-  }
-
-  query(querySQL, params) {
-
+  constructor(databaseDriver, config) {
+    return new databaseDriversList[databaseDriver](config[databaseDriver]);
   }
 }
